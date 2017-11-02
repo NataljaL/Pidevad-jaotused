@@ -1,130 +1,75 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title       : Pidevad jaotused
+description : Siin tutvume põhiliste pidevate jaotuste- ning  kvantiilidega
 
----
-## A really bad movie
 
-```yaml
-type: MultipleChoiceExercise
-lang: r
-xp: 50
-skills: 1
-key: cc7fd57a8c
-```
+--- type:NormalExercise lang:r xp:100 skills:1 key:af3c1cf198
+## Normaaljaotus (1)
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+Normaaljaotus on kõige levinuim pidev jaotus statistikas. Normaaljaotusel on kaks parameetrit (keskväärtus $\mu$ ja standardhälve $\sigma$), mis määravad jaotuse asukohta $x$-telje suhtes ning jaotuse kuju. Paljud inimkehaga seotud mõõtmised on normaaljaotusega. Näiteks, kui fikseerida ühe küla kõikide meeste pikkused, siis saame normaaljaotuse.
 
-`@instructions`
-- Adventure
-- Action
-- Animation
-- Comedy
+Selles harjutuses keskendume funktsioonile `rnorm()`. See genereerib valimi (ehk mitut väärtust korraga) normaaljaotusest etteantud parameetritega.
 
-`@hint`
-Have a look at the plot. Which color does the point with the lowest rating have?
+*** =instructions
 
-`@pre_exercise_code`
+* Tee läbi käsk, mis vastab muutujale `norm_valim`. Pane tähele, millega võrduvad jaotuse keskväärtus ja standardhälve selles käsus.
+* Joonista saadud valimi väärtuste põhjal histogramm (vastav käsk on juba kirjutatud). Kas märkasid normaaljaotuse kuju?
+* Leia saadud valimi väärtuste põhjal valimi keskmine (käsuga `mean()`) ja standardhälve (käsuga `sd()`). Sulgudesse kirjuta vastav väärtuste vektor.
+* Muuda käsus `rnorm()` parameetri `mean` 35-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega?
+* Muuda käsus `rnorm()` parameetri `sd` 0.1-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega nüüd?
+
+*** =hint
+
+* Argument `breaks` määrab histogrammis tulpade arvu (alati ei ole võimalik saavutada etteantud tulpade arvu, seetõttu võib tulla neid mõnevõrra rohkem või vähem).
+* Valimikeskmise leidmiseks kasuta `mean(norm_valim)`.
+* Valimi standardhälbe saamiseks kasuta `sd(norm_valim)`.
+
+*** =pre_exercise_code
 ```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
 ```
 
-`@sct`
+*** =sample_code
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+# Valim mahuga 500 elementi normaaljaotusest:
+norm_valim <- rnorm(500, mean = 5, sd = 2.5)
 
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+# Histogramm valimi põhjal:
+hist(norm_valim, breaks = 50)
+
+# Valimikeskmine:
+
+
+# Valimi standardhälve:
+
+
 ```
 
----
-## More movies
-
-```yaml
-type: NormalExercise
-lang: r
-xp: 100
-skills: 1
-key: 2b43cfc4f7
-```
-
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
-
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
-
-`@instructions`
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
-
-`@hint`
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
-
-`@pre_exercise_code`
+*** =solution
 ```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-load(url("https://s3.amazonaws.com/assets.datacamp.com/course/teach/movies.RData"))
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"), c("Genre", "Rating", "Run")]
+# Valim mahuga 500 elementi normaaljaotusest:
+norm_valim <- rnorm(500, mean = 35, sd = 0.1)
 
-# Clean up the environment
-rm(Movies)
-```
+# Histogramm valimi põhjal:
+hist(norm_valim, breaks = 50)
 
-`@sample_code`
-```{r}
-# movie_selection is available in your workspace
+# Valimikeskmine:
+mean(norm_valim)
 
-# Check out the structure of movie_selection
-
-
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+# Valimi standardhälve:
+sd(norm_valim)
 
 ```
 
-`@solution`
+*** =sct
 ```{r}
-# movie_selection is available in your workspace
 
-# Check out the structure of movie_selection
-str(movie_selection)
-
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
-```
-
-`@sct`
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
-
-test_object("good_movies")
-
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
+# submission correctness tests
+test_function("mean", args=c("x"), incorrect_msg = "Kas arvutasid keskmise valimi `norm_valim` põhjal?")
+test_function("sd", args=c("x"), incorrect_msg = "Kas arvutasid standardhälbe valimi `norm_valim` põhjal?")
 
 test_error()
 
-success_msg("Good work!")
+# Final message the student will see upon completing the exercise
+success_msg("Hea töö!")
 ```
