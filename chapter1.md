@@ -13,7 +13,7 @@ Antud harjutuses keskendume funktsioonile `rnorm()`. Selle abil saab genereerida
 *** =instructions
 
 * Tee läbi käsk, mis vastab muutujale `norm_valim`. Pane tähele, millega võrduvad  selles käsus jaotuse keskväärtus ja standardhälve.
-* Joonista saadud valimi väärtuste põhjal histogramm (vastav käsk on juba kirjutatud). Kas märkasid normaaljaotuse kuju?
+* Joonista saadud valimi põhjal histogramm (vastav käsk on juba kirjutatud). Kas märkasid normaaljaotuse kuju?
 * Leia saadud valimi väärtuste põhjal valimi keskmine (käsuga `mean()`) ja standardhälve (käsuga `sd()`). Sulgudesse kirjuta vastav väärtuste vektor.
 * Muuda käsus `rnorm()` parameetri `mean` 35-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega?
 * Muuda käsus `rnorm()` parameetri `sd` 0.1-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega nüüd?
