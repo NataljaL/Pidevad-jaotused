@@ -73,3 +73,82 @@ test_error()
 # Final message the student will see upon completing the exercise
 success_msg("Hea töö!")
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:360222386c
+## Normaaljaotus (2)
+
+Alati on kasulik teada kõiki valemeid, mille abil saab leida vajalikku tõenäosust. Kuid reaalses elus me üsna harva teostame arvututsi käsitsi. Ja miks ka peaks? `R`-is on selle jaoks vajalikud käsud olemas!
+
+Normaaljaotusega on `R`-is seotud järgmised käsud:
+
+* `dnorm()`: normaaljaotuse tihedusfunktsiooni $f(x)$ väärtus,
+* `pnorm()`: normaaljaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
+* `qnorm()`: normaaljaotuse kvantiil,
+* `rnorm()`: (pseudo) juhuslik valim normaaljaotusest.
+
+Eelmises harjutused juba kasutasid funktsiooni `rnorm()`. Funktsiooni `pnorm()` saab kasutada tõenäosuste leidmiseks. Uurime, kuidas see töötab!
+
+*** =instructions
+
+* Tee läbi käsk, mis vastab muutujale `norm_valim`. Pane tähele, millega võrduvad  selles käsus jaotuse keskväärtus ja standardhälve.
+* Joonista saadud valimi põhjal histogramm (vastav käsk on juba kirjutatud). Kas märkasid normaaljaotuse kuju?
+* Leia saadud valimi  põhjal  keskmine (käsuga `mean()`) ja standardhälve (käsuga `sd()`). Sulgudes ikka vastav väärtuste vektor.
+* Muuda käsus `rnorm()` parameetri `mean` väärtust 35-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega?
+* Muuda käsus `rnorm()` parameetri `sd` väärtust 0.1-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega nüüd?
+
+*** =hint
+
+* Argument `breaks` määrab histogrammis tulpade arvu (alati ei ole võimalik saavutada etteantud tulpade arvu, seetõttu võib tulla neid mõnevõrra rohkem või vähem).
+* Valimikeskmise leidmiseks kasuta `mean(norm_valim)`.
+* Valimi standardhälbe saamiseks kasuta `sd(norm_valim)`.
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Valim mahuga 500 elementi normaaljaotusest:
+norm_valim <- rnorm(500, mean = 5, sd = 2.5)
+
+# Histogramm valimi põhjal:
+hist(norm_valim, breaks = 50)
+
+# Valimikeskmine:
+
+
+# Valimi standardhälve:
+
+
+```
+
+*** =solution
+```{r}
+# Valim mahuga 500 elementi normaaljaotusest:
+norm_valim <- rnorm(500, mean = 35, sd = 0.1)
+
+# Histogramm valimi põhjal:
+hist(norm_valim, breaks = 50)
+
+# Valimikeskmine:
+mean(norm_valim)
+
+# Valimi standardhälve:
+sd(norm_valim)
+
+```
+
+*** =sct
+```{r}
+
+# submission correctness tests
+test_function("mean", incorrect_msg = "Kas arvutasid keskmise valimi `norm_valim` põhjal?")
+test_function("sd", incorrect_msg = "Kas arvutasid standardhälbe valimi `norm_valim` põhjal?")
+
+test_error()
+
+# Final message the student will see upon completing the exercise
+success_msg("Hea töö!")
+```
