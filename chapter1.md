@@ -156,4 +156,53 @@ test_error()
 
 # Final message the student will see upon completing the exercise
 success_msg("Tubli töö!")
+``
+
+`
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:059edb5e57
+## Ühtlane jaotus
+
+Eristatakse kahte tüüpi ühtlast jaotust: diskreetne ühtlane ja pidev ühtlane jaotus. Ühtlase jaotuse korral on kõikidel realisatsioonidel võrdne tõenäosus. 
+
+Diskreetse ühtlase jaotusega on näiteks silmade arvud 1-st 6-ni ausa täringu veeretamisel. Igal realisatsioonil on tõenäosus 1/6. Pideva ühtlase jaotusega on näiteks Jüri bussi ootamise aeg, kui bussid käivad iga 10 minuti tagant ja Jüri tuleb bussipeatusse suvalisel hetkel.
+
+Paremal on 4 graafikut. Kas leiad, milline vastab diskreetsele ühtlasele ja milline pidevale ühtlasele jaotusele? Ole tähelepanelik ka vertikaaltelje tähistustega!
+
+*** =instructions
+
+* Joonisel A on diskreetne õhtlane jaotus ja joonisel B on pideva ühtlase jaotuse tihedusfunktsioon.
+* Ühtegi diskreetset jaotust siin pole, kuid joonisel C on pidev ühtlane jaotus.
+* Joonisel D on diskreetne ühtlane jaotus ja joonisel  A on pidev ühtlane jaotus.
+* Joonisel D on diskreetne ühtlane jaotus ja joonisel C on pidev ühtlane jaotus.
+
+*** =hint
+
+* Ühtlase jaotuse korral kõikidel $x$-väärtustel on võrdne tõenäosus diskreetsel juhul (või tihedusfunktsiooni väärtus pideval juhul).
+* Joonisel  B on tegelikult kujutatud jaotusfunktsiooni graafik (küll pideva ühtlase jaotuse korral).
+* Kui jaotus on diskreetne, siis tõenäosuse graafikul on "augud"".
+
+*** =pre_exercise_code
+```{r}
+x <- seq(-5, 20, length = 50)
+color<-"orange"
+par(lwd=2, mfrow=c(2,2), cex.lab=1.5, cex.main=1.2)
+plot(x, dunif(x, 0, 15), type='s', ylim=c(0,.15), col=color, ylab="f(x)", main='Joonis A')
+plot(x, punif(x, 0, 15), type='l', col=color, ylab="F(x)", main='Joonis B')
+plot(x, dnorm(x, 5, 2), type='l',col=color, ylab="f(x)", main='Joonis C')
+plot(x, dunif(x, 0, 15), type='h', ylim=c(0,.15), col=color, ylab="P(X=x)", main='Joonis D')
+
+```
+
+*** =sct
+```{r}
+msg1 = "Joonisel A pole kahjuks diskreetne jaotus. Joonisel B on küll pidev ühtlane jaotus, kuid $y$-teljel on jaotus-, mitte tihedusfunktsioon.."
+msg2 = "Siiski üks diskreetne jaotus on siin olemas. Joonisel C on tegu normaaljaotusega."
+msg3 = "Sul on absoluutne õigus! Suundu järgmise ülesande juurde."
+msg4 = "Kahjuks joonisel C on tegu normaaljaotusega. Kuid sul on õigus joonise D suhtes!"
+
+test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
+
+# Final message the student will see upon completing the exercise
+success_msg("Ilusti tehtud!")
 ```
