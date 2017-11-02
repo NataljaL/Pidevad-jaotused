@@ -91,37 +91,42 @@ Eelmises harjutused juba kasutasid funktsiooni `rnorm()`. Funktsiooni `pnorm()` 
 
 *** =instructions
 
-* Tee läbi käsk, mis vastab muutujale `norm_valim`. Pane tähele, millega võrduvad  selles käsus jaotuse keskväärtus ja standardhälve.
-* Joonista saadud valimi põhjal histogramm (vastav käsk on juba kirjutatud). Kas märkasid normaaljaotuse kuju?
-* Leia saadud valimi  põhjal  keskmine (käsuga `mean()`) ja standardhälve (käsuga `sd()`). Sulgudes ikka vastav väärtuste vektor.
-* Muuda käsus `rnorm()` parameetri `mean` väärtust 35-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega?
-* Muuda käsus `rnorm()` parameetri `sd` väärtust 0.1-ks ja tee käsud uuesti läbi. Mis juhtub normaaljaotusega nüüd?
+* Muutuja `pikkused` sisaldab 100 juhuslikult valitud täiskasvanu mehe pikkuse näitajat.
+* Selle pikkuse jaotus sarnaneb normaaljaotusega (vt pikkuste histogrammi ning punast normaaljaotuse tiheduse kõverat -- väga sarnaste kujudega!)
+* Kasutades normaaljaotust saab näiteks leida tõenäosust, et juhuslikult valitud täiskasvanu mehe pikkus on alla 165 cm (käsk on juba olemas, tee läbi).
+* Kasutades sama normaaljaotust, leia tõenäosus, et juhuslikult valitud mehe pikkus on üle 190 cm (saab kasutada sama käsku, muutes vastavalt argumendi `lower.tail`).
+* Leia tõenäosus, et pikkus jääb vaemikku 185-195 cm.
 
 *** =hint
 
-* Argument `breaks` määrab histogrammis tulpade arvu (alati ei ole võimalik saavutada etteantud tulpade arvu, seetõttu võib tulla neid mõnevõrra rohkem või vähem).
-* Valimikeskmise leidmiseks kasuta `mean(norm_valim)`.
-* Valimi standardhälbe saamiseks kasuta `sd(norm_valim)`.
+Look at the help pages with ?pnorm or help(pnorm).
+Use the mean and standard deviation of variable deep as arguments for the pnorm() function.
+Remember to use the lower.tail argument in the pnorm() function. It determines which "side" you are calculating. The lower.tail argument can be either TRUE or FALSE.
 
 *** =pre_exercise_code
 ```{r}
+set.seed(44)
+x <- round(rnorm(100, 175, 5))
+hist(learning2014$deep, freq = F, col='orange', ylim=c(0,.8))
+x<-seq(0, 5, length = 50)
+lines(x, dnorm(x, mean(learning2014$deep), sd(learning2014$deep)), type="l", col="orangered", lwd=2)
 
 ```
 
 *** =sample_code
 ```{r}
-# Valim mahuga 500 elementi normaaljaotusest:
-norm_valim <- rnorm(500, mean = 5, sd = 2.5)
+# learning2014 is available
 
-# Histogramm valimi põhjal:
-hist(norm_valim, breaks = 50)
+# Create object deep
+deep <- learning2014$deep
 
-# Valimikeskmine:
+# Approximate probability of deep being smaller than 3
+pnorm(3, mean = mean(deep), sd = sd(deep), lower.tail = TRUE)
+
+# Approximate probability of deep being greater than 3
 
 
-# Valimi standardhälve:
-
-
+# Approximate probability of deep being greater than 4.5
 ```
 
 *** =solution
