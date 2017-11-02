@@ -206,3 +206,4 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 # Final message the student will see upon completing the exercise
 success_msg("Ilusti tehtud!")
 ```
+
