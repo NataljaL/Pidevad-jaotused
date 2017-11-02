@@ -93,9 +93,9 @@ Eelmises harjutused juba kasutasid funktsiooni `rnorm()`. Funktsiooni `pnorm()` 
 
 * Muutuja `pikkused` sisaldab 100 juhuslikult valitud täiskasvanu mehe pikkuse näitajat.
 * Selle pikkuse jaotus sarnaneb normaaljaotusega (vt pikkuste histogrammi ning punast normaaljaotuse tiheduse kõverat -- väga sarnaste kujudega!)
-* Kasutades normaaljaotust saab näiteks leida tõenäosust, et juhuslikult valitud täiskasvanu mehe pikkus on alla 165 cm (käsk on juba olemas, tee läbi).
+* Kasutades normaaljaotust saab näiteks leida tõenäosust, et juhuslikult valitud täiskasvanu mehe pikkus on alla 165 cm või sellega võrdne (käsk on juba olemas, tee läbi).
 * Kasutades sama normaaljaotust, leia tõenäosus, et juhuslikult valitud mehe pikkus on üle 190 cm (saab kasutada sama käsku, muutes vastavalt argumendi `lower.tail`).
-* Leia tõenäosus, et pikkus jääb vaemikku 185-195 cm.
+* Leia tõenäosus, et pikkus jääb poollõiku (185, 195] cm (tuleta meelde, et $P(a<X\leq b)=F(b)-F(a)$).
 
 *** =hint
 
@@ -107,7 +107,7 @@ Eelmises harjutused juba kasutasid funktsiooni `rnorm()`. Funktsiooni `pnorm()` 
 ```{r}
 set.seed(44)
 pikkused <- round(rnorm(100, 175, 5))
-hist(pikkused, freq = F, col='orange', breaks=10)
+hist(pikkused, freq = F, col='orange', breaks=10, main="")
 x<-seq(155, 205, 0.1)
 lines(x, dnorm(x, mean(pikkused), sd(pikkused)), type="l", col="orangered", lwd=2)
 
@@ -115,45 +115,45 @@ lines(x, dnorm(x, mean(pikkused), sd(pikkused)), type="l", col="orangered", lwd=
 
 *** =sample_code
 ```{r}
-# learning2014 is available
+# Tõenäosus, et pikkus on <= 165:
+t1 <- pnorm(165, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+t1
 
-# Create object deep
-deep <- learning2014$deep
+# Tõenäosus, et pikkus on > 190:
+t2 <- 
+t2
 
-# Approximate probability of deep being smaller than 3
-pnorm(3, mean = mean(deep), sd = sd(deep), lower.tail = TRUE)
+# Tõenäosus, et pikkus jääb poollõiku poollõiku (185, 195] cm:
+t3 <- 
+t3
 
-# Approximate probability of deep being greater than 3
-
-
-# Approximate probability of deep being greater than 4.5
 ```
 
 *** =solution
 ```{r}
-# Valim mahuga 500 elementi normaaljaotusest:
-norm_valim <- rnorm(500, mean = 35, sd = 0.1)
+# Tõenäosus, et pikkus on <= 165:
+t1 <- pnorm(165, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+t1
 
-# Histogramm valimi põhjal:
-hist(norm_valim, breaks = 50)
+# Tõenäosus, et pikkus on > 190:
+t2 <-  pnorm(190, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)
+t2
 
-# Valimikeskmine:
-mean(norm_valim)
-
-# Valimi standardhälve:
-sd(norm_valim)
+# Tõenäosus, et pikkus jääb poollõiku poollõiku (185, 195] cm:
+t3 <- pnorm(195, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)-pnorm(185, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+t3
 
 ```
 
 *** =sct
 ```{r}
+test_object("t1", incorrect_msg = "Kontrolli muutujat `t1`!" )
+test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`!" )
+test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`!" )
 
-# submission correctness tests
-test_function("mean", incorrect_msg = "Kas arvutasid keskmise valimi `norm_valim` põhjal?")
-test_function("sd", incorrect_msg = "Kas arvutasid standardhälbe valimi `norm_valim` põhjal?")
-
+# test if the students code produces an error
 test_error()
 
 # Final message the student will see upon completing the exercise
-success_msg("Hea töö!")
+success_msg("Tubli töö!")
 ```
