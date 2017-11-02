@@ -65,7 +65,7 @@ sd(norm_valim)
 ```{r}
 
 # submission correctness tests
-test_function("mean", args=c("x"), incorrect_msg = "Kas arvutasid keskmise valimi `norm_valim` põhjal?")
+test_function("mean", incorrect_msg = "Kas arvutasid keskmise valimi `norm_valim` põhjal?")
 test_function("sd", args=c("x"), incorrect_msg = "Kas arvutasid standardhälbe valimi `norm_valim` põhjal?")
 
 test_error()
