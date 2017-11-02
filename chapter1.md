@@ -6,7 +6,7 @@ description : Siin tutvume põhiliste pidevate jaotuste- ning  kvantiilidega
 --- type:NormalExercise lang:r xp:100 skills:1 key:af3c1cf198
 ## Normaaljaotus (1)
 
-Normaaljaotus on kõige levinuim pidev jaotus statistikas. Normaaljaotusel on kaks parameetrit (keskväärtus $\mu$ ja standardhälve $\sigma$), mis määravad jaotuse asukohta $x$-telje suhtes ning jaotuse kuju. Paljud inimkehaga seotud mõõtmised on normaaljaotusega. Näiteks, kui fikseerida ühe küla kõikide meeste pikkused, siis saame normaaljaotuse.
+Normaaljaotus on kõige levinuim pidev jaotus statistikas. Normaaljaotusel on kaks parameetrit (keskväärtus $\mu$ ja standardhälve $\sigma$), mis määravad jaotuse asukohta $x$-telje suhtes ning jaotuse kuju. Paljud inimkehaga seotud mõõtmised on normaaljaotusega. Näiteks, kui fikseerides ära mingi küla kõikide meeste pikkuseid, on need normaaljaotusega.
 
 Selles harjutuses keskendume funktsioonile `rnorm()`. See genereerib valimi (ehk mitut väärtust korraga) normaaljaotusest etteantud parameetritega.
 
