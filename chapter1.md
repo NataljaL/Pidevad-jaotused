@@ -99,17 +99,17 @@ Eelmises harjutused juba kasutasid funktsiooni `rnorm()`. Funktsiooni `pnorm()` 
 
 *** =hint
 
-Look at the help pages with ?pnorm or help(pnorm).
-Use the mean and standard deviation of variable deep as arguments for the pnorm() function.
-Remember to use the lower.tail argument in the pnorm() function. It determines which "side" you are calculating. The lower.tail argument can be either TRUE or FALSE.
+* Abi käsu kasutamise kohta saab  `?pnorm` või  `help(pnorm)` abil.
+* Keskväärtuse ja standardhälbe jaoks funktsioonis `pnorm()`  tuleb kasutada `mean(pikkused)` ja `sd(pikkused)`.
+* Ära unustada kasutada argumenti `lower.tail`. See määrab jaotusel seda poolt, mille kohta tõenäosust soovid leida. Kui `lower.tail=TRUE`, siis leitakse `P(X<=x)`, vastasel juhul `FALSE` tõenäosuse `P(X>x)` leidmiseks.
 
 *** =pre_exercise_code
 ```{r}
 set.seed(44)
-x <- round(rnorm(100, 175, 5))
-hist(learning2014$deep, freq = F, col='orange', ylim=c(0,.8))
-x<-seq(0, 5, length = 50)
-lines(x, dnorm(x, mean(learning2014$deep), sd(learning2014$deep)), type="l", col="orangered", lwd=2)
+pikkused <- round(rnorm(100, 175, 5))
+hist(pikkused, freq = F, col='orange', breaks=10)
+x<-seq(155, 205, 0.1)
+lines(x, dnorm(x, mean(pikkused), sd(pikkused)), type="l", col="orangered", lwd=2)
 
 ```
 
