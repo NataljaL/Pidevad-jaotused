@@ -195,7 +195,7 @@ plot(x, dunif(x, 0, 15), type='h', ylim=c(0,.15), col=color, ylab="P(X=x)", main
 *** =sct
 ```{r}
 msg1 = "Joonisel A pole kahjuks diskreetne jaotus. Joonisel B on küll pidev ühtlane jaotus, kuid $y$-teljel on jaotusfunktsioon $F(x)$, mitte tihedusfunktsioon $f(x)$."
-msg2 = "Siiski üks diskreetne jaotus on siin olemas. Joonisel C on tegu normaaljaotusega."
+msg2 = "Siiski üks diskreetne jaotus on siin olemas. Lisaks on joonisel C tegu normaaljaotusega."
 msg3 = "Sul on absoluutne õigus! Suundu järgmise ülesande juurde."
 msg4 = "Kahjuks joonisel C on tegu normaaljaotusega. Kuid sul on õigus joonise D suhtes!"
 
