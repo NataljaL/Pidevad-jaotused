@@ -169,7 +169,7 @@ Paremal on 4 graafikut. Kas leiad, milline nendest vastab diskreetsele ühtlasel
 
 *** =instructions
 
-* Joonisel A on diskreetne õhtlane jaotus ja joonisel B on pideva ühtlase jaotuse tihedusfunktsioon.
+* Joonisel A on diskreetne ühtlane jaotus ja joonisel B on pideva ühtlase jaotuse tihedusfunktsioon.
 * Ühtegi diskreetset jaotust siin pole, kuid joonisel C on pidev ühtlane jaotus.
 * Joonisel D on diskreetne ühtlane jaotus ja joonisel  A on pidev ühtlane jaotus.
 * Joonisel D on diskreetne ühtlane jaotus ja joonisel C on pidev ühtlane jaotus.
