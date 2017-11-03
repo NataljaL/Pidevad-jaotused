@@ -165,7 +165,7 @@ Eristatakse kahte tüüpi ühtlast jaotust: diskreetne ühtlane ja pidev ühtlan
 
 Diskreetse ühtlase jaotusega on näiteks silmade arvud 1-st 6-ni ausa täringu veeretamisel. Igal realisatsioonil on tõenäosus 1/6. Pideva ühtlase jaotusega on näiteks Jüri bussi ootamise aeg, kui bussid käivad iga 10 minuti tagant ja Jüri tuleb bussipeatusse suvalisel hetkel.
 
-Paremal on 4 graafikut. Kas leiad, milline nendest vastab diskreetsele ühtlasele ja milline pidevale ühtlasele jaotusele? Ole tähelepanelik ka vertikaaltelje tähistusega!
+Paremal on 4 graafikut (piltide kuvamine võib veidi aega võtta). Kas leiad, milline nendest vastab diskreetsele ühtlasele ja milline pidevale ühtlasele jaotusele? Ole tähelepanelik ka vertikaaltelje tähistusega!
 
 *** =instructions
 
