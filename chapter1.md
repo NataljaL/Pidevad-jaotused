@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:34fa4e0047
+--- type:NormalExercise lang:r xp:100 skills:1 key:274eec15f4
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -288,7 +288,7 @@ test_error()
 success_msg("Suurepärane tulemus!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:aba2de8e79
+--- type:NormalExercise lang:r xp:100 skills:1 key:b1e36d981b
 ## Jaotuse kvantiilid ja täiendkvantiilid
 
 Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q\_{\alpha}$ või täiendkvantiili $\bar{q}\_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
@@ -332,8 +332,8 @@ qnorm_plot <- function(alpha, twoway = F) {
   axis(1, at = round(at,2) , col.ticks = "red", las = 2)
   
   # show the critical value with the call to qnorm()
-  mtext(paste0("- z = qnorm(",a,") = ",round(q1,2)),
-        side=1, line = 4, cex = 1.5)
+  #mtext(paste0("- z = qnorm(",a,") = ",round(q1,2)),
+   #     side=1, line = 4, cex = 1.5)
   
   # highlight critical regions, add matching percentages
   x1 <- x[x<=q1]; x2 <- x[x>=q2]
