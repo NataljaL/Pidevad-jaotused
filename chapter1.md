@@ -205,3 +205,85 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:09ca688778
+## Eksponentjaotus
+
+Exponentjaotus sobib sageli üsna hästi selliste nähtuste kirjeldamiseks, mis on seotud ooteajaga sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
+
+Exponentjaotusega on `R`-is seotud järgmised käsud:
+
+* `dexp()`: normaaljaotuse tihedusfunktsiooni $f(x)$ väärtus,
+* `pexp()`: normaaljaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
+* `qexp()`: normaaljaotuse kvantiil,
+* `rexp()`: (pseudo) juhuslik valim normaaljaotusest.
+
+Olgu $X\sim Exp(\lambda)$, kus $X$ on ooteaeg kuni järgmise kliendi saabumiseni. Tuletame meelde, et keskmine ooteaeg on sel juhul $EX=1/\lambda$.
+
+*** =instructions
+
+* Muutuja `ooteaeg` sisaldab ooteaegu ühe päeva esimese 100 kliendi kohta (minutites) konkreetses poes. 
+* Selle jaotus sarnaneb eksponentjaotusega (vt ooteaja histogrammi ning rohelist eksponentjaotuse tiheduse kõverat -- väga sarnaste kujudega!)
+* Kasutades eksponentjaotust saab näiteks leida tõenäosust, et ooteaeg kuni järgmise kliendi saabumiseni on vähemalt 15 minutit (käsk on juba olemas, tee läbi).
+* Kasutades sama eksponentjaotust, leia tõenäosus, et ooteaeg kuni kliendi saabumiseni on kuni 3 minutit (3 min kaasaarvatud). Pane tähele argumenti `lower.tail`!
+* Leia nüüd tõenäosus, et ooteaeg kuni järgmise kliendi saabumiseni on vahemikus (2, 6] minutit (2 ei ole kaasaarvatud ja 6 on).
+
+*** =hint
+
+* Abi käsu kasutamise kohta saab  `?pexp` või  `help(pexp)` abil.
+* Pane tähele, et eksponentjaotuse parameetriks on nn sündmuste intensiivsus ühes ajaühikus $\lambda$, kusjuures $\lambda=1/EX$.
+* Ära unustada kasutada argumenti `lower.tail`. See määrab jaotusel seda poolt, mille kohta tõenäosust soovid leida. Kui `lower.tail=TRUE`, siis leitakse `P(X<=x)`, vastasel juhul `FALSE` tõenäosuse `P(X>x)` leidmiseks.
+
+*** =pre_exercise_code
+```{r}
+set.seed(3)
+ooteaeg <- round(rexp(100, 0.2), 2)
+hist(ooteaeg, freq = F, col='lightgreen', breaks=10, main="")
+x<-seq(0, 20, 0.1)
+lines(x, dexp(x, 1/mean(ooteaeg)), type="l", col="darkgreen", lwd=2)
+
+```
+
+*** =sample_code
+```{r}
+# Tõenäosus, et ooteaeg on vähemalt 15 minutit (X>=15):
+t1 <- pexp(15, rate = 1/mean(ooteaeg), lower.tail = FALSE)
+t1
+
+# Tõenäosus, et ooteaeg on kuni 3 min k.a. (X<=3):
+t2 <- 
+t2
+
+# Tõenäosus, et ooteaeg on vahemikus (2, 6]:
+t3 <- 
+t3
+
+```
+
+*** =solution
+```{r}
+# Tõenäosus, et pikkus on <= 165:
+t1 <- pnorm(165, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+t1
+
+# Tõenäosus, et pikkus on > 190:
+t2 <-  pnorm(190, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)
+t2
+
+# Tõenäosus, et pikkus jääb poollõiku poollõiku (185, 195] cm:
+t3 <- pnorm(195, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)-pnorm(185, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+t3
+
+```
+
+*** =sct
+```{r}
+test_object("t1", incorrect_msg = "Kontrolli muutujat `t1`!" )
+test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`!" )
+test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`!" )
+
+# test if the students code produces an error
+test_error()
+
+# Final message the student will see upon completing the exercise
+success_msg("Tubli töö!")
+```
