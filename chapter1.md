@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:60fd279a32
+--- type:NormalExercise lang:r xp:100 skills:1 key:8bfcbcdfa5
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -288,12 +288,14 @@ test_error()
 success_msg("Suurepärane tulemus!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:6b954b6d4a
+--- type:NormalExercise lang:r xp:100 skills:1 key:86cbd72454
 ## Jaotuse mediaan, kvantiilid ja täiendkvantiilid
 
 Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q\_{\alpha}$ või täiendkvantiili $\bar{q}\_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
 
-Funktsioon `qnorm()` kasutab argumendina tõenäosuse väärtust $\alpha$ ning arvutab juhusliku suuruse $X$ (ehk $x$-telje) väärtust $q\_\alpha$, mis on juhusliku suuruse $X$ $\alpha$-kvantiil (juhul kui `lower.tail=TRUE`) ja väärtust $\bar{q}\_\alpha$ (juhul kui `lower.tail=FALSE`). $\alpha$-kvantiili korral kehtib $P(X\leq q\_\alpha)=\alpha$ ja $\alpha$-täiendkvantiili korral: $P(X>\bar{q}\_\alpha)=\alpha$.
+Funktsioon `qnorm()` kasutab argumendina tõenäosuse väärtust $\alpha$ ning arvutab juhusliku suuruse $X$ (ehk $x$-telje) väärtust $q\_\alpha$, mis on juhusliku suuruse $X$ $\alpha$-kvantiil (juhul kui `lower.tail=TRUE`) ja täiendkvantiili $\bar{q}\_\alpha$ (juhul kui `lower.tail=FALSE`). 
+
+$\alpha$-kvantiili korral kehtib $P(X\leq q\_\alpha)=\alpha$ ja $\alpha$-täiendkvantiili korral: $P(X>\bar{q}\_\alpha)=\alpha$.
 
 
 As with all the *norm() functions, qnorm() has default arguments mean = 0 and sd = 1; corresponding to the standard normal distribution.
