@@ -205,12 +205,100 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:ca0eac0da9
+--- type:NormalExercise lang:r xp:100 skills:1 key:ca658adb8c
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
 
 Exponentjaotuse jaoks on `R`-is olemas järgmised käsud:
+
+* `dexp()`: eksponentjaotuse tihedusfunktsiooni $f(x)$ väärtus,
+* `pexp()`: eksponentjaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
+* `qexp()`: eksponentjaotuse kvantiil,
+* `rexp()`: (pseudo) juhuslik valim eksponentjaotusest.
+
+Olgu $X\sim Exp(\lambda)$, kus $X$ on ooteaeg kuni järgmise kliendi saabumiseni. Tuletame meelde, et keskmine ooteaeg on sel juhul $EX=1/\lambda$.
+
+*** =instructions
+
+* Muutuja `ooteaeg` sisaldab ooteaegu ühe päeva esimese 100 kliendi kohta (minutites) konkreetses poes. 
+* Selle jaotus sarnaneb eksponentjaotusega (vt ooteaja histogrammi ning tumerohelist eksponentjaotuse tiheduse kõverat -- väga sarnaste kujudega!)
+* Kasutades eksponentjaotust saab näiteks leida tõenäosust, et ooteaeg kuni järgmise kliendi saabumiseni on vähemalt 15 minutit (käsk on juba olemas, tee läbi).
+* Kasutades sama eksponentjaotust, leia tõenäosus, et ooteaeg kuni kliendi saabumiseni on kuni 3 minutit (3 min kaasaarvatud). Pane tähele argumenti `lower.tail`!
+* Leia nüüd tõenäosus, et ooteaeg kuni järgmise kliendi saabumiseni on vahemikus (2, 6] minutit (2 ei ole kaasaarvatud ja 6 on).
+
+*** =hint
+
+* Abi käsu kasutamise kohta saab  `?pexp` või  `help(pexp)` abil.
+* Pane tähele, et eksponentjaotuse parameetriks on nn sündmuste intensiivsus $\lambda$ ühes ajaühikus, kusjuures $\lambda=1/EX$.
+* Ära unustada kasutada argumenti `lower.tail`. See määrab jaotusel seda poolt, mille kohta tõenäosust soovid leida. Kui `lower.tail=TRUE`, siis leitakse `P(X<=x)`, vastasel juhul `FALSE` tõenäosuse `P(X>x)` leidmiseks.
+
+*** =pre_exercise_code
+```{r}
+set.seed(3)
+ooteaeg <- round(rexp(100, 0.2), 2)
+hist(ooteaeg, freq = F, col='lightgreen', breaks=10, main="")
+x<-seq(0, 20, 0.1)
+lines(x, dexp(x, 1/mean(ooteaeg)), type="l", col="darkgreen", lwd=2)
+
+```
+
+*** =sample_code
+```{r}
+# Tõenäosus, et ooteaeg on vähemalt 15 minutit (X>=15):
+t1 <- pexp(15, rate = 1/mean(ooteaeg), lower.tail = FALSE)
+t1
+
+# Tõenäosus, et ooteaeg on kuni 3 min k.a. (X<=3):
+t2 <- 
+t2
+
+# Tõenäosus, et ooteaeg on vahemikus (2, 6]:
+t3 <- 
+t3
+
+```
+
+*** =solution
+```{r}
+# Tõenäosus, et ooteaeg on vähemalt 15 minutit (X>=15):
+t1 <- pexp(15, rate = 1/mean(ooteaeg), lower.tail = FALSE)
+t1
+
+# Tõenäosus, et ooteaeg on kuni 3 min k.a. (X<=3):
+t2 <- pexp(3, rate = 1/mean(ooteaeg), lower.tail = TRUE)
+t2
+
+# Tõenäosus, et ooteaeg on vahemikus (2, 6]:
+t3 <- pexp(6, rate = 1/mean(ooteaeg), lower.tail = TRUE)-pexp(2, rate = 1/mean(ooteaeg), lower.tail = TRUE)
+t3
+
+```
+
+*** =sct
+```{r}
+test_object("t1", incorrect_msg = "Kontrolli muutujat `t1`!" )
+test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`! Kas muutsid argumendi `lower.tail`?" )
+test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`! Kas kasutasid valemit P(a<X<=b)=P(X<=b)-P(X<=a)?" )
+
+# test if the students code produces an error
+test_error()
+
+# Final message the student will see upon completing the exercise
+success_msg("Suurepärane tulemus!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:f505f60237
+## Jaotuse mediaan, kvantiilid ja täiendkvantiilid
+
+Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q_{\alpha}$ või täiendkvantiili $\bar{q}_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
+
+Funktsioon `qnorm()` kasutab argumendina tõenäosuse väärtust $\alpha$ ning arvutab juhusliku suuruse $X$ (ehk $x$-telje) väärtust $q_\alpha$, mis on juhusliku suuruse $X$ $\alpha$-kvantiil (juhul kui `lower.tail=TRUE`) ja väärtust $\bar{q}_\alpha$ (juhul kui `lower.tail=FALSE`). $\alpha$-kvantiili korral kehtib $P(X\leq q_\alpha)=\alpha$ ja $\alpha$-täiendkvantiili korral: $P(X>\bar{q}_\alpha)=\alpha$.
+
+
+As with all the *norm() functions, qnorm() has default arguments mean = 0 and sd = 1; corresponding to the standard normal distribution.
+
+The quantile values of the standard normal variable are also called critical values. They will be very useful later on for interval estimation and hypothesis testing. The questions below relate to the standard normal distribution.
 
 * `dexp()`: eksponentjaotuse tihedusfunktsiooni $f(x)$ väärtus,
 * `pexp()`: eksponentjaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
