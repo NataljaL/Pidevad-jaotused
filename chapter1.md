@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:9ac8d9f120
+--- type:NormalExercise lang:r xp:100 skills:1 key:1c0fa7a9a7
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -288,7 +288,7 @@ test_error()
 success_msg("Suurepärane tulemus!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:30dbef7b21
+--- type:NormalExercise lang:r xp:100 skills:1 key:6ddc611661
 ## Jaotuse kvantiilid ja täiendkvantiilid
 
 Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q\_{\alpha}$ või täiendkvantiili $\bar{q}\_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
@@ -323,7 +323,7 @@ qnorm_plot <- function(alpha, twoway = F) {
   
   # draw the plot
   if(twoway) alph <- "alpha/2 =" else alph <- "alpha ="
-  main <- paste("Critical values and regions of the N(0,1) distribution \n",
+  main <- paste("Kvantiil ja sellele vastav pindala jaotuse N(0,1) korral \n",
                 alph, a)
   plot(x, y, type ="l", main = main, xlab = "", yaxt = "n", ylab = "", xaxt = "n")
   axis(1, at = c(-3, -1, 0, 1, 3))
