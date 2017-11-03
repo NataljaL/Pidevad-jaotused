@@ -205,17 +205,17 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:1a25bc7e18
+--- type:NormalExercise lang:r xp:100 skills:1 key:3011be9410
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
 
-Exponentjaotusega on `R`-is seotud järgmised käsud:
+Exponentjaotuse jaoks on `R`-is olemas järgmised käsud:
 
-* `dexp()`: normaaljaotuse tihedusfunktsiooni $f(x)$ väärtus,
-* `pexp()`: normaaljaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
-* `qexp()`: normaaljaotuse kvantiil,
-* `rexp()`: (pseudo) juhuslik valim normaaljaotusest.
+* `dexp()`: eksponentjaotuse tihedusfunktsiooni $f(x)$ väärtus,
+* `pexp()`: eksponentjaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
+* `qexp()`: eksponentjaotuse kvantiil,
+* `rexp()`: (pseudo) juhuslik valim eksponentjaotusest.
 
 Olgu $X\sim Exp(\lambda)$, kus $X$ on ooteaeg kuni järgmise kliendi saabumiseni. Tuletame meelde, et keskmine ooteaeg on sel juhul $EX=1/\lambda$.
 
