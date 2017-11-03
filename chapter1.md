@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:8bfcbcdfa5
+--- type:NormalExercise lang:r xp:100 skills:1 key:9ac8d9f120
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -288,92 +288,121 @@ test_error()
 success_msg("Suurepärane tulemus!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:86cbd72454
-## Jaotuse mediaan, kvantiilid ja täiendkvantiilid
+--- type:NormalExercise lang:r xp:100 skills:1 key:30dbef7b21
+## Jaotuse kvantiilid ja täiendkvantiilid
 
 Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q\_{\alpha}$ või täiendkvantiili $\bar{q}\_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
 
-Funktsioon `qnorm()` kasutab argumendina tõenäosuse väärtust $\alpha$ ning arvutab juhusliku suuruse $X$ (ehk $x$-telje) väärtust $q\_\alpha$, mis on juhusliku suuruse $X$ $\alpha$-kvantiil (juhul kui `lower.tail=TRUE`) ja täiendkvantiili $\bar{q}\_\alpha$ (juhul kui `lower.tail=FALSE`). 
+Funktsioon `qnorm()` kasutab argumendina tõenäosuse väärtust $\alpha$ ning arvutab juhusliku suuruse $X$ (ehk $x$-telje) väärtust $q\_\alpha$, mis on juhusliku suuruse $X$ kvantiil (juhul kui `lower.tail=TRUE`), ja täiendkvantiili $\bar{q}\_\alpha$ (juhul kui `lower.tail=FALSE`). 
 
 $\alpha$-kvantiili korral kehtib $P(X\leq q\_\alpha)=\alpha$ ja $\alpha$-täiendkvantiili korral: $P(X>\bar{q}\_\alpha)=\alpha$.
 
-
-As with all the *norm() functions, qnorm() has default arguments mean = 0 and sd = 1; corresponding to the standard normal distribution.
-
-The quantile values of the standard normal variable are also called critical values. They will be very useful later on for interval estimation and hypothesis testing. The questions below relate to the standard normal distribution.
-
-* `dexp()`: eksponentjaotuse tihedusfunktsiooni $f(x)$ väärtus,
-* `pexp()`: eksponentjaotuse jaotusfunktsiooni $F(x)=P(X\leq x)$ väärtus,
-* `qexp()`: eksponentjaotuse kvantiil,
-* `rexp()`: (pseudo) juhuslik valim eksponentjaotusest.
-
-Olgu $X\sim Exp(\lambda)$, kus $X$ on ooteaeg kuni järgmise kliendi saabumiseni. Tuletame meelde, et keskmine ooteaeg on sel juhul $EX=1/\lambda$.
+Analoogiliselt käsuga `norm()`  on ka funktsioonil  `qnorm()` vaikeargumendid `mean = 0` ja `sd = 1`, mis vastavad standardsele normaaljaotusele. Seda jaotust on ka kasutatud antud harjutuses.
 
 *** =instructions
 
-* Muutuja `ooteaeg` sisaldab ooteaegu ühe päeva esimese 100 kliendi kohta (minutites) konkreetses poes. 
-* Selle jaotus sarnaneb eksponentjaotusega (vt ooteaja histogrammi ning tumerohelist eksponentjaotuse tiheduse kõverat -- väga sarnaste kujudega!)
-* Kasutades eksponentjaotust saab näiteks leida tõenäosust, et ooteaeg kuni järgmise kliendi saabumiseni on vähemalt 15 minutit (käsk on juba olemas, tee läbi).
-* Kasutades sama eksponentjaotust, leia tõenäosus, et ooteaeg kuni kliendi saabumiseni on kuni 3 minutit (3 min kaasaarvatud). Pane tähele argumenti `lower.tail`!
-* Leia nüüd tõenäosus, et ooteaeg kuni järgmise kliendi saabumiseni on vahemikus (2, 6] minutit (2 ei ole kaasaarvatud ja 6 on).
+1. Uuri, kuidas on leitud järgmine tõenäosus: $P(X\leq -1.64)$  ja on ümardatud 2 kohani peale koma.
+2. Uuri, kuidas on leitud kvantiil, mis vastab tõenäosusele 0.05. Kvantiili väärtust on samuti ümardatud. Käsuga `qnorm_plot(0.05)` saad joonise, mis vastab jaotusele $N(0,\, 1)$ ning leitud kvantiilile.
+3. Leia tõenäosus $P(X\leq -1.96)$ ja ümarda 3 kohanii peale koma.
+4. Leia kvantiil, mis vastab tõenäosusele 0.025 ja ümarda 2 kohani peale koma. Kuva see joonisel käsuga `qnorm_plot()`.
+5. Leia täiendkvantiili väärtus, mis vastab tõenäosusele 0.05 ja ümarda 2 kohani peale koma. Võrdle punktis 2 leitud kvantiili väärtusega.
 
 *** =hint
 
-* Abi käsu kasutamise kohta saab  `?pexp` või  `help(pexp)` abil.
-* Pane tähele, et eksponentjaotuse parameetriks on nn sündmuste intensiivsus $\lambda$ ühes ajaühikus, kusjuures $\lambda=1/EX$.
-* Ära unustada kasutada argumenti `lower.tail`. See määrab jaotusel seda poolt, mille kohta tõenäosust soovid leida. Kui `lower.tail=TRUE`, siis leitakse `P(X<=x)`, vastasel juhul `FALSE` tõenäosuse `P(X>x)` leidmiseks.
+* Ära unusta lisada argumenti `lower.tail=FALSE` kui soovid leida täiendkvantiili.
 
 *** =pre_exercise_code
 ```{r}
-set.seed(3)
-ooteaeg <- round(rexp(100, 0.2), 2)
-hist(ooteaeg, freq = F, col='lightgreen', breaks=10, main="")
-x<-seq(0, 20, 0.1)
-lines(x, dexp(x, 1/mean(ooteaeg)), type="l", col="darkgreen", lwd=2)
-
+# pre exercise code here
+qnorm_plot <- function(alpha, twoway = F) {
+  par(mar = c(7,4,5,4))
+  a <- alpha
+  x <- (-50:50)/10
+  y <- dnorm(x)
+  q1 <- qnorm(a); q2 <- qnorm(1-a)
+  
+  # draw the plot
+  if(twoway) alph <- "alpha/2 =" else alph <- "alpha ="
+  main <- paste("Critical values and regions of the N(0,1) distribution \n",
+                alph, a)
+  plot(x, y, type ="l", main = main, xlab = "", yaxt = "n", ylab = "", xaxt = "n")
+  axis(1, at = c(-3, -1, 0, 1, 3))
+  # mark the critical values with ticks
+  if(twoway) at <- c(q1, q2) else at <- q1
+  axis(1, at = round(at,2) , col.ticks = "red", las = 2)
+  
+  # show the critical value with the call to qnorm()
+  mtext(paste0("- z = qnorm(",a,") = ",round(q1,2)),
+        side=1, line = 4, cex = 1.5)
+  
+  # highlight critical regions, add matching percentages
+  x1 <- x[x<=q1]; x2 <- x[x>=q2]
+  if(twoway) {
+    polygon(c(min(x1),x1, max(x1), min(x2), x2, max(x2)),
+            c(0, dnorm(x1),0, 0, dnorm(x2), 0), col = "grey60")
+      text(x = c(-3.5, 3.5), y = c(0.08,0.08), labels = paste0(a*100,"%"), cex = 1.5)
+      text(x = 0, y = 0.08, labels=paste0(100*(1-alpha/2),"%"), cex = 1.5)
+  } else {
+    polygon(c(min(x1),x1, max(x1)),
+            c(0, dnorm(x1), 0), col = "grey60")
+      text(x = -3.5, y = 0.08, labels = paste0(a*100,"%"), cex = 1.5)
+      text(x = 0, y = 0.08, labels=paste0(100*(1-alpha),"%"), cex = 1.5)
+  }
+}
 ```
 
 *** =sample_code
 ```{r}
-# Tõenäosus, et ooteaeg on vähemalt 15 minutit (X>=15):
-t1 <- pexp(15, rate = 1/mean(ooteaeg), lower.tail = FALSE)
-t1
+# Harjutuse jaoks on loodud funktsioon qnorm_plot().
 
-# Tõenäosus, et ooteaeg on kuni 3 min k.a. (X<=3):
-t2 <- 
-t2
+# 1. P(X <= - 1.64)
+round(pnorm(-1.64), digits = 2)
 
-# Tõenäosus, et ooteaeg on vahemikus (2, 6]:
-t3 <- 
-t3
+# 2. Millise q korral: P(X <= q) = 0.05
+round(qnorm(0.05), digits = 2)
+qnorm_plot(0.05) # Graafik
+
+# 3. P(X <= -1.96)
+
+
+# 4. Millise q korral: P(X <= q) = 0.025
+
+
+
+# 5. Millise täiend(q) korral P(X >= täiend(q)) = 0.05
+
 
 ```
 
 *** =solution
 ```{r}
-# Tõenäosus, et ooteaeg on vähemalt 15 minutit (X>=15):
-t1 <- pexp(15, rate = 1/mean(ooteaeg), lower.tail = FALSE)
-t1
+# Harjutuse jaoks on loodud funktsioon qnorm_plot().
 
-# Tõenäosus, et ooteaeg on kuni 3 min k.a. (X<=3):
-t2 <- pexp(3, rate = 1/mean(ooteaeg), lower.tail = TRUE)
-t2
+# 1. P(X <= - 1.64)
+round(pnorm(-1.64), digits = 2)
 
-# Tõenäosus, et ooteaeg on vahemikus (2, 6]:
-t3 <- pexp(6, rate = 1/mean(ooteaeg), lower.tail = TRUE)-pexp(2, rate = 1/mean(ooteaeg), lower.tail = TRUE)
-t3
+# 2. Millise q korral: P(X <= q) = 0.05
+round(qnorm(0.05), digits = 2)
+qnorm_plot(0.05) # Graafik
+
+# 3. P(X <= -1.96)
+round(pnorm(-1.96), digits = 3)
+
+# 4. Millise q korral: P(X <= q) = 0.025
+round(qnorm(0.025), digits = 2)
+qnorm_plot(0.025)
+
+# 5. Millise täiend(q) korral P(X >= täiend(q)) = 0.05
+round(qnorm(0.05, lower.tail=FALSE), digits = 2)
 
 ```
 
 *** =sct
 ```{r}
-test_object("t1", incorrect_msg = "Kontrolli muutujat `t1`!" )
-test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`! Kas muutsid argumendi `lower.tail`?" )
-test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`! Kas kasutasid valemit P(a<X<=b)=P(X<=b)-P(X<=a)?" )
+test_output_contains("round(pnorm(-1.96), digits = 3)", incorrect_msg = "Küsitud tõenäosust saab leida funktsiooni `pnorm()` abil. Ära unusta ümardamist!")
+test_output_contains("round(qnorm(0.025), digits = 2)", incorrect_msg = "Küsitud kvantiili saab leida funktsioon `qnorm()` abil. Ära unusta ümardamist!")
+test_output_contains("round(qnorm(0.05, lower.tail=FALSE), digits = 2)", incorrect_msg = "Küsitud täiendkvantiili saab leida funktsioon `qnorm()` abil, milles kirjuta ka argumendina `lower.tail=FALSE`.")
 
-# test if the students code produces an error
 test_error()
-
-# Final message the student will see upon completing the exercise
-success_msg("Suurepärane tulemus!")
+success_msg("Tubli töö!. Ja ongi lisapraktikum läbi!")
 ```
