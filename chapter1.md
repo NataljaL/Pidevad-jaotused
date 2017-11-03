@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:09ca688778
+--- type:NormalExercise lang:r xp:100 skills:1 key:119386045a
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi selliste nähtuste kirjeldamiseks, mis on seotud ooteajaga sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -261,16 +261,16 @@ t3
 
 *** =solution
 ```{r}
-# Tõenäosus, et pikkus on <= 165:
-t1 <- pnorm(165, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+# Tõenäosus, et ooteaeg on vähemalt 15 minutit (X>=15):
+t1 <- pexp(15, rate = 1/mean(ooteaeg), lower.tail = FALSE)
 t1
 
-# Tõenäosus, et pikkus on > 190:
-t2 <-  pnorm(190, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)
+# Tõenäosus, et ooteaeg on kuni 3 min k.a. (X<=3):
+t2 <- pexp(3, rate = 1/mean(ooteaeg), lower.tail = TRUE)
 t2
 
-# Tõenäosus, et pikkus jääb poollõiku poollõiku (185, 195] cm:
-t3 <- pnorm(195, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)-pnorm(185, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+# Tõenäosus, et ooteaeg on vahemikus (2, 6]:
+t3 <- pexp(6, rate = 1/mean(ooteaeg), lower.tail = TRUE)-pexp(2, rate = 1/mean(ooteaeg), lower.tail = TRUE)
 t3
 
 ```
@@ -278,12 +278,12 @@ t3
 *** =sct
 ```{r}
 test_object("t1", incorrect_msg = "Kontrolli muutujat `t1`!" )
-test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`!" )
-test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`!" )
+test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`! Kas muutsid argumendi `lower.tail`?" )
+test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`! Kas kasutasid valemit $P(a<X\leq b)=P(X\leq b)-P(X\leq a)$?" )
 
 # test if the students code produces an error
 test_error()
 
 # Final message the student will see upon completing the exercise
-success_msg("Tubli töö!")
+success_msg("Suurepärane tulemus!")
 ```
