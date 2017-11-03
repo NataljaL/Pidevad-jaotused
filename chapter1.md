@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:2afb3037cf
+--- type:NormalExercise lang:r xp:100 skills:1 key:eb21f6818b
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -288,7 +288,7 @@ test_error()
 success_msg("Suurepärane tulemus!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:c60a5d613b
+--- type:NormalExercise lang:r xp:100 skills:1 key:4c30fd9cc2
 ## Jaotuse kvantiilid ja täiendkvantiilid
 
 Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q\_{\alpha}$ või täiendkvantiili $\bar{q}\_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
@@ -297,7 +297,7 @@ Funktsioon `qnorm()` kasutab argumendina tõenäosuse väärtust $\alpha$ ning a
 
 $\alpha$-kvantiili korral kehtib $P(X\leq q\_\alpha)=\alpha$ ja $\alpha$-täiendkvantiili korral: $P(X>\bar{q}\_\alpha)=\alpha$.
 
-Analoogiliselt käsuga `norm()`  on ka funktsioonil  `qnorm()` vaikeargumendid `mean = 0` ja `sd = 1`, mis vastavad standardsele normaaljaotusele. Seda jaotust on ka kasutatud antud harjutuses.
+Analoogiliselt käsuga `pnorm()`  on ka funktsioonil  `qnorm()` vaikeargumendid `mean = 0` ja `sd = 1`, mis vastavad standardsele normaaljaotusele. Seda jaotust on ka kasutatud antud harjutuses.
 
 *** =instructions
 
