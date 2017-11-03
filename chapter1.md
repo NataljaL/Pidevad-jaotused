@@ -205,10 +205,10 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:119386045a
+--- type:NormalExercise lang:r xp:100 skills:1 key:1a25bc7e18
 ## Eksponentjaotus
 
-Exponentjaotus sobib sageli üsna hästi selliste nähtuste kirjeldamiseks, mis on seotud ooteajaga sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
+Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
 
 Exponentjaotusega on `R`-is seotud järgmised käsud:
 
