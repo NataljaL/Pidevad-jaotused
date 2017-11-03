@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:274eec15f4
+--- type:NormalExercise lang:r xp:100 skills:1 key:2afb3037cf
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -288,7 +288,7 @@ test_error()
 success_msg("Suurepärane tulemus!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:b1e36d981b
+--- type:NormalExercise lang:r xp:100 skills:1 key:c60a5d613b
 ## Jaotuse kvantiilid ja täiendkvantiilid
 
 Oled ehk märkanud eelmistes harjutustes käske `qexp()` ja `qnorm()`. Nende abil saab leida vastava teoreetilise jaotuse kvantiili $q\_{\alpha}$ või täiendkvantiili $\bar{q}\_{\alpha}$.  Vaatame siin põhjalikumalt funktsiooni `qnorm()`, kuna normaaljaotuse kvantiili läheb hiljem vaja. 
@@ -404,5 +404,5 @@ test_output_contains("round(qnorm(0.025), digits = 2)", incorrect_msg = "Küsitu
 test_output_contains("round(qnorm(0.05, lower.tail=FALSE), digits = 2)", incorrect_msg = "Küsitud täiendkvantiili saab leida funktsioon `qnorm()` abil, milles kirjuta ka argumendina `lower.tail=FALSE`.")
 
 test_error()
-success_msg("Tubli töö!. Ja ongi lisapraktikum läbi!")
+success_msg("Tubli töö! Ja ongi lisapraktikum läbi!")
 ```
