@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:8d254a5f4d
+--- type:NormalExercise lang:r xp:100 skills:1 key:703491e92e
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -230,7 +230,7 @@ Olgu $X\sim Exp(\lambda)$, kus $X$ on ooteaeg kuni järgmise kliendi saabumiseni
 *** =hint
 
 * Abi käsu kasutamise kohta saab  `?pexp` või  `help(pexp)` abil.
-* Pane tähele, et eksponentjaotuse parameetriks on nn sündmuste intensiivsus ühes ajaühikus $\lambda$, kusjuures $\lambda=1/EX$.
+* Pane tähele, et eksponentjaotuse parameetriks on nn sündmuste intensiivsus $\lambda$ ühes ajaühikus, kusjuures $\lambda=1/EX$.
 * Ära unustada kasutada argumenti `lower.tail`. See määrab jaotusel seda poolt, mille kohta tõenäosust soovid leida. Kui `lower.tail=TRUE`, siis leitakse `P(X<=x)`, vastasel juhul `FALSE` tõenäosuse `P(X>x)` leidmiseks.
 
 *** =pre_exercise_code
