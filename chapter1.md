@@ -205,7 +205,7 @@ test_mc(correct = 3, feedback_msgs = c(msg1,msg2,msg3,msg4))
 success_msg("Ilusti tehtud!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:ecd2c317b0
+--- type:NormalExercise lang:r xp:100 skills:1 key:ca0eac0da9
 ## Eksponentjaotus
 
 Exponentjaotus sobib sageli üsna hästi sellistele nähtustele, mis kirjeldavad ooteaega sõltumatute sündmuste vahel. Näiteks ooteaeg kuni järgmise kliendini  veebipoes või ooteaeg kuni järgmise spämmini  serveris.
@@ -279,7 +279,7 @@ t3
 ```{r}
 test_object("t1", incorrect_msg = "Kontrolli muutujat `t1`!" )
 test_object("t2", incorrect_msg = "Kontrolli muutujat `t2`! Kas muutsid argumendi `lower.tail`?" )
-test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`! Kas kasutasid valemit $P(a<X<=b)=P(X<=b)-P(X<=a)$?" )
+test_object("t3", incorrect_msg = "Kontrolli muutujat `t3`! Kas kasutasid valemit P(a<X<=b)=P(X<=b)-P(X<=a)?" )
 
 # test if the students code produces an error
 test_error()
