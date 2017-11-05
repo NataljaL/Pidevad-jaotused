@@ -140,7 +140,7 @@ t2 <-  pnorm(190, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)
 t2
 
 # Tõenäosus, et pikkus jääb poollõiku poollõiku (185, 195] cm:
-t3 <- pnorm(195, mean = mean(pikkused), sd = sd(pikkused), lower.tail = FALSE)-pnorm(185, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
+t3 <- pnorm(195, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)-pnorm(185, mean = mean(pikkused), sd = sd(pikkused), lower.tail = TRUE)
 t3
 
 ```
